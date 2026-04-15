@@ -64,6 +64,16 @@ section{padding:5.5rem 3rem}
 .over-mini span{font-size:.7rem;color:rgba(255,255,255,.5);letter-spacing:.05em}
 .anbi-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--goud-zacht);border:1px solid rgba(200,168,75,.3);color:var(--bruin-mid);padding:.4rem .8rem;border-radius:2px;font-size:.78rem;font-weight:500;margin-top:1.25rem}
 
+/* ══ VIDEO ══ */
+.video-sectie{background:var(--wit)}
+.video-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:4rem;align-items:center;margin-top:2rem}
+.video-wrap{position:relative;width:100%;padding-bottom:56.25%;border-radius:4px;overflow:hidden;box-shadow:0 12px 40px rgba(61,43,31,.12);border:1px solid var(--rand);display:block}
+.video-wrap img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover}
+.video-wrap .play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:72px;height:72px;background:rgba(26,15,8,.85);border-radius:50%;display:grid;place-items:center;transition:all .3s;border:2px solid var(--goud)}
+.video-wrap:hover .play-btn{background:var(--goud);transform:translate(-50%,-50%) scale(1.08)}
+.video-wrap .play-btn svg{margin-left:4px}
+.video-wrap:hover .play-btn svg path{fill:#1a0f08}
+
 /* ══ MISSIE & VISIE ══ */
 .missie{background:var(--wit)}
 .missie-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2.5rem}
@@ -136,7 +146,7 @@ footer{background:var(--donker);padding:3.5rem 3rem 2rem;border-top:1px solid rg
   .hamburger{display:flex}
   section{padding:3.5rem 1.5rem}
   .page-hero{padding:8rem 1.5rem 4rem}
-  .over-intro-grid,.missie-grid,.beleid-grid,.anbi-info-grid{grid-template-columns:1fr;gap:2.5rem}
+  .over-intro-grid,.video-grid,.missie-grid,.beleid-grid,.anbi-info-grid{grid-template-columns:1fr;gap:2.5rem}
   .bestuur-grid,.doel-grid{grid-template-columns:1fr 1fr}
 }
 @media(max-width:580px){
@@ -209,6 +219,22 @@ footer{background:var(--donker);padding:3.5rem 3rem 2rem;border-top:1px solid rg
           <div class="over-mini"><strong>ANBI</strong><span>Erkend</span></div>
           <div class="over-mini"><strong>2023</strong><span>Ramadan</span></div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ VIDEO ══════ -->
+<section class="video-sectie">
+  <div class="container">
+    <div class="video-grid">
+      <div class="video-wrap">
+        <iframe src="https://www.youtube.com/embed/z2XJ6gNG_I4" title="Stichting Iqra Nederland" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div>
+        <div class="s-label">Bekijk onze video</div>
+        <h2 class="s-titel">Maak kennis met Stichting Iqra</h2>
+        <p class="s-tekst">In deze video lichten wij onze visie en plannen toe. Ontdek hoe wij samen met de gemeenschap werken aan een Islamitisch Centrum in Rotterdam &mdash; een plek voor kennis, gebed en welzijn.</p>
       </div>
     </div>
   </div>
