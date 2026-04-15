@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Periodiek Doneren — Stichting Iqra Nederland</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bruin:        #3d2b1f;
+  --bruin-mid:    #6b4c38;
+  --bruin-licht:  #a07850;
+  --goud:         #c8a84b;
+  --goud-licht:   #e8cc80;
+  --goud-zacht:   #f5ead0;
+  --creme:        #faf6ee;
+  --wit:          #ffffff;
+  --tekst:        #1e1510;
+  --tekst-zacht:  #6b5a4e;
+  --rand:         #e8ddd0;
+  --donker:       #1a0f08;
+}
+
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--tekst);
+  background: var(--creme);
+  line-height: 1.7;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: rgba(26,15,8,0.97);
+  backdrop-filter: blur(10px);
+  padding: 0 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 68px;
+  border-bottom: 1px solid rgba(200,168,75,0.2);
+}
+
+.nav-logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.nav-logo-cirkel {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid var(--goud);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.nav-logo-cirkel svg {
+  width: 22px;
+  height: 22px;
+}
+
+.nav-logo-tekst {
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-logo-groot {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--goud);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  line-height: 1;
+}
+
+.nav-logo-klein {
+  color: rgba(255,255,255,0.45);
+  font-size: 0.58rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.7);
+  text-decoration: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.05em;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--goud-licht); }
+
+.nav-doneer {
+  background: var(--goud) !important;
+  color: var(--donker) !important;
+  font-weight: 500 !important;
+  padding: 0.45rem 1.2rem;
+  border-radius: 2px;
+}
+
+/* HERO DONATIE */
+.don-hero {
+  background:
+    linear-gradient(160deg, rgba(26,15,8,0.95) 0%, rgba(61,43,31,0.88) 100%),
+    url('https://images.unsplash.com/photo-1542816417-0983c9c9ad53?w=1600&q=80') center/cover no-repeat;
+  padding: 9rem 3rem 5rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.don-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 80px;
+  background: linear-gradient(to top, var(--creme), transparent);
+}
+
+.don-hero-inner {
+  max-width: 680px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.don-hero-arabisch {
+  font-size: 1.2rem;
+  color: var(--goud);
+  direction: rtl;
+  margin-bottom: 1.25rem;
+  display: block;
+  opacity: 0.85;
+}
+
+.don-hero-badge {
+  display: inline-block;
+  border: 1px solid rgba(200,168,75,0.35);
+  color: var(--goud-licht);
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 2px;
+  margin-bottom: 1.25rem;
+}
+
+.don-hero h1 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  color: var(--wit);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+
+.don-hero h1 em { color: var(--goud); font-style: normal; }
+
+.don-hero-hadith {
+  border: 1px solid rgba(200,168,75,0.2);
+  border-radius: 3px;
+  padding: 1.5rem 2rem;
+  margin: 1.5rem auto;
+  max-width: 560px;
+  background: rgba(200,168,75,0.05);
+}
+
+.don-hero-hadith p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: rgba(255,255,255,0.85);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+  line-height: 1.7;
+}
+
+.don-hero-hadith span {
+  font-size: 0.72rem;
+  color: var(--goud);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+/* DONATIE FORMULIER */
+.don-sectie {
+  padding: 5rem 3rem;
+}
+
+.don-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1.4fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* LINKS INFORMATIE */
+.don-info h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  color: var(--bruin);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.don-info p {
+  font-size: 0.9rem;
+  color: var(--tekst-zacht);
+  line-height: 1.85;
+  margin-bottom: 1.25rem;
+}
+
+.s-label {
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--goud);
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.s-label::before {
+  content: '';
+  width: 20px;
+  height: 1px;
+  background: var(--goud);
+}
+
+.voordelen {
+  list-style: none;
+  margin: 1.5rem 0;
+}
+
+.voordelen li {
+  font-size: 0.875rem;
+  color: var(--tekst-zacht);
+  padding: 0.6rem 0;
+  border-bottom: 1px solid var(--rand);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  line-height: 1.5;
+}
+
+.voordelen li::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--goud);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 0.45rem;
+}
+
+.anbi-blok {
+  background: var(--goud-zacht);
+  border: 1px solid rgba(200,168,75,0.3);
+  border-radius: 3px;
+  padding: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+.anbi-blok h4 {
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--bruin-mid);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.anbi-blok p {
+  font-size: 0.82rem;
+  color: var(--bruin-mid);
+  line-height: 1.7;
+  margin: 0;
+}
+
+.anbi-blok a { color: var(--bruin); }
+
+.eenmalig-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--goud);
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-decoration: none;
+  margin-top: 1rem;
+  transition: gap 0.2s;
+}
+
+.eenmalig-link:hover { gap: 0.65rem; }
+.eenmalig-link::after { content: '→'; }
+
+/* FORMULIER */
+.don-formulier {
+  background: var(--wit);
+  border: 1px solid var(--rand);
+  border-radius: 4px;
+  padding: 2.5rem;
+}
+
+.form-sectie-titel {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: var(--bruin);
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--rand);
+}
+
+.form-tabs {
+  display: flex;
+  gap: 0;
+  margin-bottom: 2rem;
+  border: 1px solid var(--rand);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.form-tab {
+  flex: 1;
+  padding: 0.7rem;
+  text-align: center;
+  font-size: 0.85rem;
+  cursor: pointer;
+  background: var(--creme);
+  color: var(--tekst-zacht);
+  border: none;
+  font-family: 'Inter', sans-serif;
+  transition: all 0.2s;
+}
+
+.form-tab.actief {
+  background: var(--bruin);
+  color: var(--goud-licht);
+  font-weight: 500;
+}
+
+.form-rij {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.form-rij.enkel {
+  grid-template-columns: 1fr;
+}
+
+.form-groep {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-bottom: 0;
+}
+
+.form-groep label {
+  font-size: 0.75rem;
+  color: var(--tekst-zacht);
+  letter-spacing: 0.05em;
+  font-weight: 500;
+}
+
+.form-groep label span {
+  color: var(--goud);
+  margin-left: 1px;
+}
+
+.form-groep input,
+.form-groep select,
+.form-groep textarea {
+  border: 1px solid var(--rand);
+  border-radius: 2px;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.875rem;
+  font-family: 'Inter', sans-serif;
+  color: var(--tekst);
+  background: var(--creme);
+  transition: border-color 0.2s;
+  outline: none;
+  width: 100%;
+}
+
+.form-groep input:focus,
+.form-groep select:focus,
+.form-groep textarea:focus {
+  border-color: var(--goud);
+  background: var(--wit);
+}
+
+.bedrag-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.bedrag-knop {
+  padding: 0.6rem;
+  text-align: center;
+  border: 1px solid var(--rand);
+  border-radius: 2px;
+  font-size: 0.82rem;
+  cursor: pointer;
+  background: var(--creme);
+  color: var(--tekst-zacht);
+  font-family: 'Inter', sans-serif;
+  transition: all 0.15s;
+}
+
+.bedrag-knop:hover {
+  border-color: var(--goud);
+  color: var(--bruin);
+}
+
+.bedrag-knop.actief {
+  background: var(--bruin);
+  border-color: var(--bruin);
+  color: var(--goud-licht);
+  font-weight: 500;
+}
+
+.eigen-bedrag {
+  grid-column: 1 / -1;
+}
+
+.betaal-methode {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--rand);
+  border-radius: 2px;
+  background: var(--creme);
+  margin-bottom: 1rem;
+}
+
+.betaal-methode img {
+  height: 24px;
+  width: auto;
+}
+
+.betaal-methode span {
+  font-size: 0.85rem;
+  color: var(--tekst-zacht);
+}
+
+.machtiging {
+  font-size: 0.78rem;
+  color: var(--tekst-zacht);
+  line-height: 1.65;
+  padding: 1rem;
+  background: var(--creme);
+  border: 1px solid var(--rand);
+  border-radius: 2px;
+  margin-bottom: 1.25rem;
+}
+
+.submit-knop {
+  width: 100%;
+  background: var(--bruin);
+  color: var(--goud-licht);
+  border: none;
+  padding: 1rem;
+  border-radius: 2px;
+  font-size: 0.95rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.submit-knop:hover {
+  background: var(--bruin-mid);
+  transform: translateY(-1px);
+}
+
+.form-divider {
+  height: 1px;
+  background: var(--rand);
+  margin: 1.5rem 0;
+}
+
+/* FOOTER */
+footer {
+  background: var(--donker);
+  padding: 3rem 3rem 2rem;
+  border-top: 1px solid rgba(200,168,75,0.15);
+}
+
+.footer-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.footer-logo {
+  font-family: 'Cormorant Garamond', serif;
+  color: var(--goud);
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.25rem;
+}
+
+.footer-sub {
+  color: rgba(255,255,255,0.3);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.footer-nav {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.footer-nav a {
+  color: rgba(255,255,255,0.45);
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: color 0.2s;
+}
+
+.footer-nav a:hover { color: var(--goud-licht); }
+
+.footer-divider {
+  width: 60px;
+  height: 1px;
+  background: rgba(200,168,75,0.25);
+  margin: 0 auto 1.25rem;
+}
+
+.footer-info {
+  color: rgba(255,255,255,0.28);
+  font-size: 0.76rem;
+  line-height: 1.8;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  nav { padding: 0 1.5rem; }
+  .nav-links { display: none; }
+  .don-sectie { padding: 3rem 1.5rem; }
+  .don-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .don-hero { padding: 8rem 1.5rem 4rem; }
+  .bedrag-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 480px) {
+  .form-rij { grid-template-columns: 1fr; }
+  .bedrag-grid { grid-template-columns: repeat(2, 1fr); }
+  .don-formulier { padding: 1.5rem; }
+}
+
+/* ANIMATIE */
+@keyframes fadeup {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.don-hero-inner > * {
+  animation: fadeup 0.7s cubic-bezier(0.16,1,0.3,1) both;
+}
+.don-hero-inner > *:nth-child(1) { animation-delay: 0.05s; }
+.don-hero-inner > *:nth-child(2) { animation-delay: 0.15s; }
+.don-hero-inner > *:nth-child(3) { animation-delay: 0.25s; }
+.don-hero-inner > *:nth-child(4) { animation-delay: 0.35s; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo-wrap">
+    <div class="nav-logo-cirkel">
+      <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="20" cy="20" r="18" stroke="#c8a84b" stroke-width="1.5"/>
+        <text x="20" y="27" text-anchor="middle" font-family="serif" font-size="16" fill="#c8a84b" font-weight="bold">إ</text>
+      </svg>
+    </div>
+    <div class="nav-logo-tekst">
+      <span class="nav-logo-groot">IQRA</span>
+      <span class="nav-logo-klein">Nederland</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html#activiteiten">Activiteiten</a></li>
+    <li><a href="index.html#ambassadeur">Ambassadeur</a></li>
+    <li><a href="index.html#nieuws">Nieuws</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="doneren.html" class="nav-doneer">Doneer</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="don-hero">
+  <div class="don-hero-inner">
+    <span class="don-hero-arabisch">بسم الله الرحمن الرحيم</span>
+    <span class="don-hero-badge">Periodiek doneren</span>
+    <h1>Word een <em>Drager</em> van Iqra</h1>
+    <div class="don-hero-hadith">
+      <p>"Wie een moskee bouwt en daarmee het aangezicht van Allaah wilt, Allaah bouwt voor hem hetzelfde in het Paradijs."</p>
+      <span>Al-Boekhaarie &amp; Moeslim</span>
+    </div>
+  </div>
+</div>
+
+<!-- DONATIE SECTIE -->
+<section class="don-sectie">
+  <div class="don-grid">
+
+    <!-- LINKS: INFO -->
+    <div class="don-info">
+      <div class="s-label">Waarom maandelijks?</div>
+      <h2>Maak een blijvend verschil</h2>
+      <p>Help mee met het realiseren van dit in shaa Allaah nobele project door middel van een periodieke donatie. Elke maand draagt u bij aan iets dat generaties lang zal blijven bestaan.</p>
+
+      <ul class="voordelen">
+        <li>Doorlopende sadaqa — ook na uw dood</li>
+        <li>Bijdrage aan de stichting van een moskee</li>
+        <li>Bijdrage aan een kennisinstituut voor de gemeenschap</li>
+        <li>Steun voor islamitische educatie van jongeren</li>
+        <li>Maandelijks opzegbaar — geen verplichtingen</li>
+      </ul>
+
+      <div class="anbi-blok">
+        <h4>✓ ANBI-status — belastingvoordeel</h4>
+        <p>Giften aan Stichting Iqra Nederland komen in aanmerking voor belastingaftrek. Voor ondernemers is de gift volledig aftrekbaar van de winst (max. 50% / €100.000 per jaar).<br><br>
+        Bereken uw voordeel via <a href="https://anbi.nl/calculator/" target="_blank">anbi.nl/calculator</a></p>
+      </div>
+
+      <a href="https://bunq.me/IqraNL" class="eenmalig-link">Liever eenmalig doneren</a>
+    </div>
+
+    <!-- RECHTS: FORMULIER -->
+    <div class="don-formulier">
+      <div class="form-tabs">
+        <button class="form-tab" onclick="window.location.href='https://bunq.me/IqraNL'">Eenmalig</button>
+        <button class="form-tab actief">Maandelijks</button>
+      </div>
+
+      <div class="form-sectie-titel">Uw gegevens</div>
+
+      <div class="form-rij">
+        <div class="form-groep">
+          <label>Naam <span>*</span></label>
+          <input type="text" placeholder="Volledige naam">
+        </div>
+        <div class="form-groep">
+          <label>E-mailadres <span>*</span></label>
+          <input type="email" placeholder="uw@email.nl">
+        </div>
+      </div>
+
+      <div class="form-rij">
+        <div class="form-groep">
+          <label>Telefoonnummer</label>
+          <input type="tel" placeholder="+31 6 ...">
+        </div>
+        <div class="form-groep">
+          <label>Bedrijfsnaam</label>
+          <input type="text" placeholder="Optioneel">
+        </div>
+      </div>
+
+      <div class="form-rij">
+        <div class="form-groep">
+          <label>Straat</label>
+          <input type="text" placeholder="Straatnaam + huisnummer">
+        </div>
+        <div class="form-groep">
+          <label>Postcode</label>
+          <input type="text" placeholder="1234 AB">
+        </div>
+      </div>
+
+      <div class="form-rij">
+        <div class="form-groep">
+          <label>Plaats</label>
+          <input type="text" placeholder="Rotterdam">
+        </div>
+        <div class="form-groep">
+          <label>Land</label>
+          <select>
+            <option>Nederland</option>
+            <option>België</option>
+            <option>Duitsland</option>
+            <option>Anders</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-divider"></div>
+      <div class="form-sectie-titel">Uw donatie</div>
+
+      <div class="form-groep" style="margin-bottom:0.75rem;">
+        <label>Project</label>
+        <input type="text" value="Islamitisch Centrum met o.a. een grote moskee" readonly style="background:var(--creme); color:var(--tekst-zacht);">
+      </div>
+
+      <div class="form-groep" style="margin-bottom:1rem;">
+        <label>Bericht</label>
+        <textarea rows="2" placeholder="Optioneel bericht" style="resize:none;"></textarea>
+      </div>
+
+      <div class="form-groep" style="margin-bottom:0.5rem;">
+        <label>Maandelijks bedrag <span>*</span></label>
+      </div>
+
+      <div class="bedrag-grid" id="bedragGrid">
+        <button class="bedrag-knop" onclick="selectBedrag(this, '5,00')">€5</button>
+        <button class="bedrag-knop" onclick="selectBedrag(this, '10,00')">€10</button>
+        <button class="bedrag-knop" onclick="selectBedrag(this, '20,00')">€20</button>
+        <button class="bedrag-knop" onclick="selectBedrag(this, '50,00')">€50</button>
+        <button class="bedrag-knop" onclick="selectBedrag(this, '75,00')">€75</button>
+        <button class="bedrag-knop" onclick="selectBedrag(this, '100,00')">€100</button>
+        <button class="bedrag-knop" onclick="selectBedrag(this, '200,00')">€200</button>
+        <button class="bedrag-knop actief" onclick="selectBedrag(this, '250,00')">€250</button>
+        <button class="bedrag-knop eigen-bedrag" onclick="toggleEigen(this)">Eigen bedrag invoeren</button>
+      </div>
+
+      <div class="form-groep" id="eigenBedrag" style="display:none; margin-bottom:1rem;">
+        <label>Eigen bedrag (€) <span>*</span></label>
+        <input type="number" placeholder="Voer bedrag in" min="1" step="1">
+      </div>
+
+      <div class="form-divider"></div>
+      <div class="form-sectie-titel">Betaalmethode</div>
+
+      <div class="betaal-methode">
+        <svg width="48" height="24" viewBox="0 0 48 24" fill="none">
+          <rect width="48" height="24" rx="3" fill="#CC0066"/>
+          <text x="24" y="16" text-anchor="middle" fill="white" font-size="9" font-family="sans-serif" font-weight="bold">iDEAL</text>
+        </svg>
+        <span>iDEAL | Wero — veilig betalen via uw bank</span>
+      </div>
+
+      <div class="machtiging">
+        Hierbij machtig ik Stichting Iqra Nederland om het bovenstaande bedrag periodiek van mijn rekeningnummer af te schrijven. Na bevestiging via uw bank-applicatie wordt het bedrag meteen afgeschreven. Daarna elke maand op dezelfde dag.
+      </div>
+
+      <button class="submit-knop" onclick="alert('U wordt doorgestuurd naar de betaalpagina. In het prototype is dit niet actief.')">
+        Bevestig periodieke donatie
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">IQRA</div>
+    <div class="footer-sub">Islamitisch Centrum Nederland</div>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="index.html#activiteiten">Activiteiten</a>
+      <a href="index.html#ambassadeur">Ambassadeur</a>
+      <a href="doneren.html">Doneren</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="footer-divider"></div>
+    <div class="footer-info">
+      <p>© 2024 Stichting Iqra Nederland &nbsp;·&nbsp; KvK 89223071 &nbsp;·&nbsp; ANBI erkend &nbsp;·&nbsp; RSIN 864915548</p>
+      <p style="margin-top:0.3rem;">IBAN: NL31 BUNQ 2085 9345 52 &nbsp;·&nbsp; info@iqranederland.nl &nbsp;·&nbsp; +316 22 44 40 80</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+function selectBedrag(el, bedrag) {
+  document.querySelectorAll('.bedrag-knop').forEach(b => b.classList.remove('actief'));
+  el.classList.add('actief');
+  document.getElementById('eigenBedrag').style.display = 'none';
+}
+
+function toggleEigen(el) {
+  document.querySelectorAll('.bedrag-knop').forEach(b => b.classList.remove('actief'));
+  el.classList.add('actief');
+  document.getElementById('eigenBedrag').style.display = 'flex';
+}
+</script>
+</body>
+</html>
