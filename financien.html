@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Financi&euml;n &mdash; Stichting Iqra Nederland</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'><circle cx='20' cy='20' r='18' fill='%231a0f08' stroke='%23c8a84b' stroke-width='2'/><text x='20' y='28' text-anchor='middle' font-size='18' fill='%23c8a84b'>إ</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bruin:#3d2b1f;--bruin-mid:#6b4c38;--bruin-licht:#a07850;
+  --goud:#c8a84b;--goud-licht:#e8cc80;--goud-zacht:#f5ead0;
+  --creme:#faf6ee;--wit:#ffffff;--tekst:#1e1510;--tekst-zacht:#6b5a4e;
+  --rand:#e8ddd0;--donker:#1a0f08;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;color:var(--tekst);background:var(--creme);line-height:1.7}
+
+/* ══ NAV ══ */
+.site-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:#1a0f08;height:70px;display:flex;align-items:center;justify-content:center;padding:0 2rem;border-bottom:1px solid rgba(200,168,75,.3)}
+.site-nav-inner{display:flex;align-items:center;justify-content:center;gap:2rem}
+.nav-logo{display:flex;align-items:center;gap:.75rem;text-decoration:none;transition:opacity .2s}
+.nav-logo:hover{opacity:.85}
+.nav-logo-text{display:flex;flex-direction:column}
+.nav-logo-name{font-family:'Cormorant Garamond',serif;color:var(--goud);font-size:1.65rem;font-weight:700;letter-spacing:.15em;line-height:1}
+.nav-logo-sub{color:rgba(255,255,255,.5);font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;margin-top:3px}
+.nav-links{display:flex;gap:.2rem;list-style:none;align-items:center}
+.nav-links li a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.86rem;font-weight:400;letter-spacing:.01em;transition:all .2s;padding:.45rem .85rem;border-radius:4px}
+.nav-links li a:hover{color:var(--goud);background:rgba(200,168,75,.1)}
+.nav-links li a.actief{color:var(--goud)}
+.nav-doneer{background:var(--goud)!important;color:#1a0f08!important;font-weight:600!important;padding:.55rem 1.4rem!important;border-radius:6px!important;font-size:.86rem!important;transition:all .2s!important;margin-left:.5rem!important}
+.nav-doneer:hover{background:var(--goud-licht)!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px}
+.hamburger span{width:24px;height:2px;background:var(--goud);border-radius:2px;transition:all .3s}
+
+/* ══ HERO ══ */
+.page-hero{background:linear-gradient(160deg,rgba(18,10,5,.96) 0%,rgba(61,43,31,.9) 100%);padding:9rem 3rem 5rem;text-align:center;position:relative;overflow:hidden}
+.page-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(to top,var(--creme),transparent)}
+.page-hero-inner{max-width:680px;margin:0 auto;position:relative;z-index:1}
+.page-hero-arab{font-size:1.15rem;color:var(--goud);direction:rtl;margin-bottom:1.25rem;display:block;opacity:.85}
+.page-hero-badge{display:inline-block;border:1px solid rgba(200,168,75,.35);color:var(--goud-licht);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;padding:.3rem .85rem;border-radius:2px;margin-bottom:1.25rem}
+.page-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,5vw,3.5rem);color:var(--wit);font-weight:700;line-height:1.12;margin-bottom:1rem}
+.page-hero h1 em{color:var(--goud);font-style:normal}
+.page-hero p{font-size:1rem;color:rgba(255,255,255,.7);max-width:520px;margin:0 auto;line-height:1.85}
+
+/* ══ SECTIES ══ */
+section{padding:5.5rem 3rem}
+.container{max-width:1100px;margin:0 auto}
+.s-label{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--goud);font-weight:500;margin-bottom:.6rem;display:flex;align-items:center;gap:.6rem}
+.s-label::before{content:'';width:24px;height:1px;background:var(--goud)}
+.s-titel{font-family:'Cormorant Garamond',serif;font-size:clamp(1.8rem,3.5vw,2.7rem);font-weight:700;color:var(--bruin);line-height:1.15;margin-bottom:1rem}
+.s-tekst{font-size:.92rem;color:var(--tekst-zacht);line-height:1.85;max-width:720px}
+
+/* ══ OVERZICHT STATS ══ */
+.fin-stats{background:var(--wit);border-bottom:1px solid var(--rand)}
+.fin-stats-row{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.fin-stat{padding:2.2rem 1.5rem;text-align:center;border-right:1px solid var(--rand);position:relative}
+.fin-stat:last-child{border-right:none}
+.fin-stat::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:0;height:2px;background:var(--goud);transition:width .3s}
+.fin-stat:hover::after{width:60%}
+.fin-stat-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:700;color:var(--bruin);display:block;line-height:1}
+.fin-stat-lbl{font-size:.7rem;color:var(--tekst-zacht);text-transform:uppercase;letter-spacing:.1em;margin-top:.4rem;display:block}
+
+/* ══ VOORTGANG ══ */
+.voortgang{background:var(--creme)}
+.voortgang-bar-wrap{margin-top:2rem;margin-bottom:2rem}
+.voortgang-labels{display:flex;justify-content:space-between;margin-bottom:.5rem}
+.voortgang-labels span{font-size:.8rem;color:var(--tekst-zacht)}
+.voortgang-labels strong{font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:var(--bruin)}
+.voortgang-bar{height:18px;background:var(--rand);border-radius:9px;overflow:hidden;position:relative}
+.voortgang-bar-fill{height:100%;background:linear-gradient(90deg,var(--goud),var(--goud-licht));border-radius:9px;position:relative;transition:width 1.5s ease}
+.voortgang-bar-fill::after{content:'';position:absolute;right:0;top:0;bottom:0;width:3px;background:var(--wit);border-radius:2px}
+.voortgang-info{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+.voortgang-info-kaart{background:var(--wit);border:1px solid var(--rand);border-radius:4px;padding:1.5rem;text-align:center}
+.voortgang-info-kaart strong{font-family:'Cormorant Garamond',serif;font-size:1.6rem;color:var(--bruin);display:block;margin-bottom:.25rem}
+.voortgang-info-kaart span{font-size:.78rem;color:var(--tekst-zacht);text-transform:uppercase;letter-spacing:.08em}
+
+/* ══ TRANSPARANTIE ══ */
+.transparantie{background:var(--wit)}
+.trans-grid{display:grid;grid-template-columns:1fr 1fr;gap:3rem;margin-top:2.5rem;align-items:start}
+.trans-kaart{border:1px solid var(--rand);border-radius:4px;padding:2rem;background:var(--creme)}
+.trans-kaart h3{font-family:'Cormorant Garamond',serif;font-size:1.2rem;color:var(--bruin);margin-bottom:1rem;font-weight:600}
+.trans-rij{display:flex;justify-content:space-between;padding:.65rem 0;border-bottom:1px solid var(--rand);font-size:.86rem}
+.trans-rij:last-child{border-bottom:none}
+.trans-rij span:first-child{color:var(--tekst-zacht)}
+.trans-rij span:last-child{color:var(--bruin);font-weight:500}
+
+/* ══ ANBI ══ */
+.anbi-sectie{background:var(--bruin);position:relative;overflow:hidden}
+.anbi-sectie::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 50%,rgba(200,168,75,.07) 0%,transparent 60%)}
+.anbi-sectie .container{position:relative;z-index:1}
+.anbi-sectie .s-label{color:var(--goud-licht)}
+.anbi-sectie .s-titel{color:var(--wit)}
+.anbi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem}
+.anbi-kaart{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:4px;padding:1.75rem;transition:all .2s}
+.anbi-kaart:hover{background:rgba(200,168,75,.07);border-color:rgba(200,168,75,.2)}
+.anbi-kaart h4{font-size:.7rem;letter-spacing:.15em;text-transform:uppercase;color:var(--goud);margin-bottom:.85rem;font-weight:500}
+.anbi-kaart p{font-size:.86rem;color:rgba(255,255,255,.7);line-height:1.85}
+.anbi-kaart a{color:var(--goud-licht);text-decoration:none}
+.anbi-kaart a:hover{text-decoration:underline}
+
+/* ══ DONATIE CTA ══ */
+.donatie-cta{background:var(--creme);text-align:center}
+.donatie-cta .container{max-width:680px}
+.cta-btns{display:flex;gap:1rem;justify-content:center;margin-top:2rem;flex-wrap:wrap}
+.btn-goud{background:var(--goud);color:var(--donker);padding:.8rem 2rem;border-radius:3px;text-decoration:none;font-weight:600;font-size:.88rem;letter-spacing:.03em;transition:all .2s;display:inline-block}
+.btn-goud:hover{background:var(--goud-licht);transform:translateY(-1px)}
+.btn-outline-bruin{background:transparent;color:var(--bruin);padding:.8rem 2rem;border-radius:3px;text-decoration:none;font-weight:400;font-size:.88rem;border:1px solid var(--rand);transition:all .2s;display:inline-block}
+.btn-outline-bruin:hover{border-color:var(--goud);background:var(--goud-zacht)}
+.iban-inline{margin-top:1.5rem;font-size:.85rem;color:var(--tekst-zacht)}
+.iban-inline strong{color:var(--bruin);font-family:'Cormorant Garamond',serif;font-size:1.1rem;letter-spacing:.03em}
+
+/* ══ FOOTER ══ */
+footer{background:var(--donker);padding:3.5rem 3rem 2rem;border-top:1px solid rgba(200,168,75,.15)}
+.footer-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center}
+.footer-logo-mark{display:flex;align-items:center;gap:.75rem;margin-bottom:.25rem}
+.footer-logo-mark span{font-family:'Cormorant Garamond',serif;color:var(--goud);font-size:1.8rem;font-weight:700;letter-spacing:.1em}
+.footer-sub{color:rgba(255,255,255,.3);font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:1.75rem}
+.footer-nav{display:flex;gap:2rem;margin-bottom:1.75rem;flex-wrap:wrap;justify-content:center}
+.footer-nav a{color:rgba(255,255,255,.45);text-decoration:none;font-size:.8rem;transition:color .2s}
+.footer-nav a:hover{color:var(--goud-licht)}
+.footer-divider{width:60px;height:1px;background:rgba(200,168,75,.25);margin:0 auto 1.25rem}
+.footer-info{color:rgba(255,255,255,.28);font-size:.75rem;line-height:1.8}
+.footer-info a{color:rgba(200,168,75,.5);text-decoration:none}
+
+/* ══ RESPONSIVE ══ */
+@media(max-width:900px){
+  .site-nav{padding:0 1.5rem}
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  section{padding:3.5rem 1.5rem}
+  .page-hero{padding:8rem 1.5rem 4rem}
+  .fin-stats-row{grid-template-columns:1fr 1fr}
+  .trans-grid{grid-template-columns:1fr}
+  .anbi-grid{grid-template-columns:1fr 1fr}
+  .voortgang-info{grid-template-columns:1fr 1fr}
+}
+@media(max-width:580px){
+  .fin-stats-row,.anbi-grid,.voortgang-info{grid-template-columns:1fr}
+}
+
+@keyframes fadeup{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.page-hero-inner>*{animation:fadeup .7s cubic-bezier(.16,1,.3,1) both}
+.page-hero-inner>*:nth-child(1){animation-delay:.05s}
+.page-hero-inner>*:nth-child(2){animation-delay:.15s}
+.page-hero-inner>*:nth-child(3){animation-delay:.25s}
+.page-hero-inner>*:nth-child(4){animation-delay:.35s}
+</style>
+</head>
+<body>
+
+<!-- ══════ NAV ══════ -->
+<nav class="site-nav"><div class="site-nav-inner">
+  <a href="index.html" class="nav-logo">
+    <div class="nav-logo-text">
+      <span class="nav-logo-name">IQRA</span>
+      <span class="nav-logo-sub">Nederland</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="over-ons.html">Over Ons</a></li>
+    <li><a href="index.html#activiteiten">Activiteiten</a></li>
+    <li><a href="index.html#ambassadeur">Ambassadeur</a></li>
+    <li><a href="financien.html" class="actief">Financi&euml;n</a></li>
+    <li><a href="index.html#contact">Contact</a></li>
+    <li><a href="doneren.html" class="nav-doneer">Doneer</a></li>
+  </ul>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').style.display=this.dataset.open?'none':'flex';this.dataset.open=this.dataset.open?'':'1'">
+    <span></span><span></span><span></span>
+  </button>
+</div></nav>
+
+<!-- ══════ HERO ══════ -->
+<div class="page-hero">
+  <div class="page-hero-inner">
+    <span class="page-hero-arab">بسم الله الرحمن الرحيم</span>
+    <span class="page-hero-badge">Financi&euml;le verantwoording</span>
+    <h1>Transparantie in <em>elke</em> euro</h1>
+    <p>Als ANBI-erkende stichting hechten wij grote waarde aan transparantie. Hier vindt u een overzicht van onze financiele stand van zaken.</p>
+  </div>
+</div>
+
+<!-- ══════ STATS ══════ -->
+<div class="fin-stats">
+  <div class="fin-stats-row">
+    <div class="fin-stat"><span class="fin-stat-num">&euro;880.632</span><span class="fin-stat-lbl">Totaal ingezameld</span></div>
+    <div class="fin-stat"><span class="fin-stat-num">400+</span><span class="fin-stat-lbl">Vaste dragers</span></div>
+    <div class="fin-stat"><span class="fin-stat-num">ANBI</span><span class="fin-stat-lbl">Erkende stichting</span></div>
+    <div class="fin-stat"><span class="fin-stat-num">&euro;0</span><span class="fin-stat-lbl">Bestuursvergoeding</span></div>
+  </div>
+</div>
+
+<!-- ══════ VOORTGANG ══════ -->
+<section class="voortgang">
+  <div class="container">
+    <div class="s-label">Stand van zaken</div>
+    <h2 class="s-titel">Inzamelingsvoortgang</h2>
+    <p class="s-tekst">Sinds de lancering in Ramadan 2023 groeit het draagvlak gestaag. Elke bijdrage brengt ons dichter bij het realiseren van een Islamitisch Centrum in Rotterdam.</p>
+
+    <div class="voortgang-bar-wrap">
+      <div class="voortgang-labels">
+        <span>Ingezameld</span>
+        <strong>&euro;880.632</strong>
+      </div>
+      <div class="voortgang-bar">
+        <div class="voortgang-bar-fill" style="width:44%"></div>
+      </div>
+      <div class="voortgang-labels" style="margin-top:.4rem">
+        <span style="font-size:.75rem;color:var(--tekst-zacht)">0%</span>
+        <span style="font-size:.75rem;color:var(--tekst-zacht)">Doel: &euro;2.000.000</span>
+      </div>
+    </div>
+
+    <div class="voortgang-info">
+      <div class="voortgang-info-kaart">
+        <strong>&euro;880.632</strong>
+        <span>Ingezameld</span>
+      </div>
+      <div class="voortgang-info-kaart">
+        <strong>400+</strong>
+        <span>Periodieke donateurs</span>
+      </div>
+      <div class="voortgang-info-kaart">
+        <strong>2023</strong>
+        <span>Gestart in Ramadan</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ TRANSPARANTIE ══════ -->
+<section class="transparantie">
+  <div class="container">
+    <div class="s-label">Financieel overzicht</div>
+    <h2 class="s-titel">Inkomsten &amp; uitgaven</h2>
+    <p class="s-tekst" style="margin-bottom:2rem">Stichting Iqra Nederland publiceert jaarlijks een financieel verslag. Hieronder een beknopt overzicht.</p>
+    <div class="trans-grid">
+      <div class="trans-kaart">
+        <h3>Inkomsten</h3>
+        <div class="trans-rij"><span>Periodieke donaties</span><span>Voornaamste bron</span></div>
+        <div class="trans-rij"><span>Eenmalige giften</span><span>Via Bunq / overboekingen</span></div>
+        <div class="trans-rij"><span>Ambassadeurs</span><span>Netwerk-inzamelacties</span></div>
+        <div class="trans-rij"><span>Intentieverklaringen</span><span>Toezeggingen</span></div>
+      </div>
+      <div class="trans-kaart">
+        <h3>Uitgaven</h3>
+        <div class="trans-rij"><span>Bestuursvergoeding</span><span>&euro;0</span></div>
+        <div class="trans-rij"><span>Administratie &amp; bankkosten</span><span>Minimaal</span></div>
+        <div class="trans-rij"><span>Communicatie &amp; marketing</span><span>Minimaal</span></div>
+        <div class="trans-rij"><span>Reservering pandverwerving</span><span>Hoofddoel</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ ANBI ══════ -->
+<section class="anbi-sectie">
+  <div class="container">
+    <div class="s-label">ANBI</div>
+    <h2 class="s-titel">ANBI-gegevens &amp; belastingvoordeel</h2>
+    <div class="anbi-grid">
+      <div class="anbi-kaart">
+        <h4>Stichtingsgegevens</h4>
+        <p>Stichting Iqra Nederland<br>
+        KvK: 89223071<br>
+        RSIN: 864915548<br>
+        IBAN: NL31 BUNQ 2085 9345 52</p>
+      </div>
+      <div class="anbi-kaart">
+        <h4>Belastingvoordeel</h4>
+        <p>Giften aan Iqra zijn aftrekbaar. Voor ondernemers volledig aftrekbaar van de winst (max. 50% / &euro;100.000 per jaar).<br><br>
+        <a href="https://anbi.nl/calculator/" target="_blank">Bereken uw voordeel &rarr;</a></p>
+      </div>
+      <div class="anbi-kaart">
+        <h4>Beloningsbeleid</h4>
+        <p>De bestuurders van Stichting Iqra Nederland ontvangen geen vergoeding voor hun werkzaamheden. De stichting heeft geen personeel in dienst.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ CTA ══════ -->
+<section class="donatie-cta">
+  <div class="container">
+    <div class="s-label" style="justify-content:center">Steun ons</div>
+    <h2 class="s-titel" style="text-align:center">Samen bouwen aan de toekomst</h2>
+    <p class="s-tekst" style="text-align:center;margin:0 auto">Elke bijdrage brengt ons dichter bij het realiseren van een Islamitisch Centrum in Rotterdam. Uw donatie is een investering in de gemeenschap &mdash; voor nu en voor toekomstige generaties.</p>
+    <div class="cta-btns">
+      <a href="doneren.html" class="btn-goud">Word vaste drager</a>
+      <a href="https://bunq.me/IqraNL" class="btn-outline-bruin" target="_blank">Eenmalig doneren</a>
+    </div>
+    <div class="iban-inline">
+      <p>Directe overboeking: <strong>NL31 BUNQ 2085 9345 52</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════ FOOTER ══════ -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo-mark">
+      <span>IQRA</span>
+    </div>
+    <div class="footer-sub">Islamitisch Centrum Nederland</div>
+    <nav class="footer-nav">
+      <a href="index.html">Home</a>
+      <a href="over-ons.html">Over Ons</a>
+      <a href="index.html#activiteiten">Activiteiten</a>
+      <a href="financien.html">Financi&euml;n</a>
+      <a href="doneren.html">Doneren</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <div class="footer-divider"></div>
+    <div class="footer-info">
+      <p>&copy; 2024 Stichting Iqra Nederland &middot; KvK 89223071 &middot; ANBI erkend &middot; RSIN 864915548</p>
+      <p style="margin-top:.3rem">Bezoek ook: <a href="https://an-nasieha.nl" target="_blank">an-nasieha.nl</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
