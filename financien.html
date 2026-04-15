@@ -140,6 +140,12 @@ footer{background:var(--donker);padding:3.5rem 3rem 2rem;border-top:1px solid rg
   .fin-stats-row,.anbi-grid,.voortgang-info{grid-template-columns:1fr}
 }
 
+/* ══ DOWNLOAD KNOP ══ */
+.download-knop{display:inline-flex;align-items:center;gap:.6rem;background:var(--bruin);color:var(--goud-licht);padding:.75rem 1.5rem;border-radius:4px;text-decoration:none;font-size:.86rem;font-weight:500;letter-spacing:.02em;transition:all .2s;border:1px solid transparent;margin-top:.75rem}
+.download-knop:hover{background:var(--bruin-mid);transform:translateY(-1px);box-shadow:0 6px 20px rgba(61,43,31,.12)}
+.download-knop svg{flex-shrink:0}
+.download-groep{display:flex;flex-direction:column;gap:.5rem;margin-top:1.5rem}
+
 @keyframes fadeup{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .page-hero-inner>*{animation:fadeup .7s cubic-bezier(.16,1,.3,1) both}
 .page-hero-inner>*:nth-child(1){animation-delay:.05s}
@@ -250,6 +256,16 @@ footer{background:var(--donker);padding:3.5rem 3rem 2rem;border-top:1px solid rg
         <div class="trans-rij"><span>Communicatie &amp; marketing</span><span>Minimaal</span></div>
         <div class="trans-rij"><span>Reservering pandverwerving</span><span>Hoofddoel</span></div>
       </div>
+    </div>
+    <div class="download-groep">
+      <a href="Jaarrekening-2024.pdf" download class="download-knop">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2v10M5 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 14h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Jaarrekening 2024 downloaden (PDF)
+      </a>
+      <a href="Jaarrekening-2023.pdf" download class="download-knop">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M9 2v10M5 8l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M3 14h12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+        Jaarrekening 2023 downloaden (PDF)
+      </a>
     </div>
   </div>
 </section>
